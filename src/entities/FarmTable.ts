@@ -12,26 +12,39 @@ import { v4 as uuid } from "uuid";
 class FarmTable {
   @PrimaryColumn()
   id: string;
+
   @Column()
-  nameFarm: string;
+  name_farm: string;
+
   @Column()
   description: string;
+
   @Column()
-  drops: string;
+  difficulty: number;
+
   @Column()
-  difficylty: string;
+  rating: string;
+
   @Column()
-  ratting: string;
+  avg_build_time: number;
+
   @Column()
-  avgBuildTime: number;
+  version_min: string;
+
   @Column()
-  crafting: string;
+  version_max: string;
+
   @Column()
-  version: string;
+  url_thumbnail: string;
+
+  @Column()
+  url_video: string;
+
   @CreateDateColumn()
-  createAt: Date;
+  create_at: Date;
+
   @UpdateDateColumn()
-  updatedAt: Date;
+  updated_at: Date;
 
   constructor() {
     if (!this.id) {

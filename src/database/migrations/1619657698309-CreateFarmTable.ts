@@ -8,11 +8,11 @@ export class CreateFarmTable1619657698309 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "uuid",
+            type: "varchar",
             isPrimary: true,
           },
           {
-            name: "nameFarm",
+            name: "name_farm",
             type: "varchar",
           },
           {
@@ -20,36 +20,40 @@ export class CreateFarmTable1619657698309 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "drops",
-            type: "array",
-          },
-          {
             name: "difficulty",
+            type: "integer",
+          },
+          {
+            name: "rating",
+            type: "decimal",
+          },
+          {
+            name: "avg_build_time",
+            type: "integer",
+          },
+          {
+            name: "version_min",
             type: "varchar",
           },
           {
-            name: "ratting",
+            name: "version_max",
             type: "varchar",
           },
           {
-            name: "avgBuildTime",
-            type: "number",
-          },
-          {
-            name: "crafting",
-            type: "array",
-          },
-          {
-            name: "version",
+            name: "url_thumbnail",
             type: "varchar",
           },
           {
-            name: "updatedAt",
+            name: "url_video",
+            type: "varchar",
+          },
+          {
+            name: "updated_at",
             type: "timestamp",
             default: "now()",
           },
           {
-            name: "createAt",
+            name: "create_at",
             type: "timestamp",
             default: "now()",
           },
@@ -59,6 +63,6 @@ export class CreateFarmTable1619657698309 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("settings");
+    await queryRunner.dropTable("farmTable");
   }
 }
