@@ -61,6 +61,12 @@ class FarmTableService {
 
     return farm
   }
+
+  async listByDrop({id}){
+    const farmDrop = await this.farmTableRepository.findByIds(id,{relations:["farmDrop"]})
+    console.log(farmDrop)
+    return farmDrop
+  }
 }
 
 export { FarmTableService };

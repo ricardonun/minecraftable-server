@@ -5,11 +5,21 @@ import {
   CreateDateColumn,
   JoinColumn,
   UpdateDateColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  ManyToMany,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { FarmDrop } from "./FarmDrop";
 
 @Entity("farmTable")
 class FarmTable {
+
+  @JoinColumn({name:"id"})
+  @OneToMany(() => FarmDrop, farmDrop => farmDrop.farmTable)
+  farmDrop: FarmDrop[]
+
   @PrimaryColumn()
   id: string;
 

@@ -8,11 +8,17 @@ export class CreateTableDrops1619739357595 implements MigrationInterface {
         columns: [
           {
             name: "id",
-            type: "integer",
+            type: "varchar",
           },
           {
             name: "item_id",
-            type: "integer",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "farm_id",
+            type: "varchar",
+            isNullable: true,
           },
           {
             name: "quantity_min",
@@ -21,6 +27,16 @@ export class CreateTableDrops1619739357595 implements MigrationInterface {
           {
             name: "quantity_max",
             type: "integer",
+          },
+          {
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
+          },
+          {
+            name: "updated_at",
+            type: "timestamp",
+            default: "now()",
           },
         ],
         foreignKeys: [
@@ -31,11 +47,20 @@ export class CreateTableDrops1619739357595 implements MigrationInterface {
             columnNames: ["item_id"],
             onDelete: "SET NULL",
             onUpdate: "SET NULL",
-          },
+          },{
+            name: "FKFarm",
+            referencedTableName:"farmTable",
+            referencedColumnNames:["id"],
+            columnNames:["farm_id"],
+            onDelete:"SET NULL",
+            onUpdate:"SET NULL"
+          }
         ],
       })
     );
   }
 
-  public async down(queryRunner: QueryRunner): Promise<void> {}
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.dropTable("farmDrops");
+  }
 }

@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { FarmDrop } from "../entities/FarmDrop";
 import { FarmTableService } from "../services/FarmTableServices";
 
 class FarmTableController {
@@ -45,6 +46,15 @@ class FarmTableController {
     const farm = await farmTableService.listById({ id });
 
     return res.json(farm);
+  }
+
+  async listByDrop(req: Request, res:Response){
+    const {id} = req.params
+    const farmTableService = new FarmTableService();
+
+    const farmDrops = await farmTableService.listByDrop({id})
+
+    return res.json(farmDrops)
   }
 }
 
