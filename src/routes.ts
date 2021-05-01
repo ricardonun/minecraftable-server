@@ -9,8 +9,10 @@ const itemController = new ItemController();
 
 /**Rotas */
 routes.post("/farms", farmTableController.create);
+routes.get("/farms/:id", farmTableController.listById);
 routes.get("/farms", farmTableController.listAllFarm);
 
 routes.post("/item", itemController.create)
 routes.get("/item", itemController.listAllItens)
+routes.get("/item/:id", itemController.listById)
 export { routes };

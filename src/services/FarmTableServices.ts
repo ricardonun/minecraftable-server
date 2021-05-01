@@ -20,7 +20,7 @@ class FarmTableService {
   constructor() {
     this.farmTableRepository = getCustomRepository(FarmTableRepository);
   }
-
+/**Metodos */
   async create({
     name_farm,
     description,
@@ -53,6 +53,13 @@ class FarmTableService {
       `SELECT * FROM farmTable`
     );
     return farmsList;
+  }
+
+  async listById({id}){
+    
+    const farm = await this.farmTableRepository.findByIds(id)
+
+    return farm
   }
 }
 

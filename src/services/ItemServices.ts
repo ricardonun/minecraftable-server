@@ -39,6 +39,12 @@ class ItemServices {
 
       return itens
   }
+
+  async listById({id}){
+    const item = await this.itemServices.findByIds(id)
+
+    return item
+  }
 }
 
 export {ItemServices}

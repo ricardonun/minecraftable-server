@@ -30,11 +30,21 @@ class FarmTableController {
 
     return res.json(farm);
   }
+
   async listAllFarm(req: Request, res: Response) {
     const farmTableService = new FarmTableService();
     const farmdata = await farmTableService.listAllFarms();
 
     return res.json(farmdata);
+  }
+
+  async listById(req: Request, res: Response) {
+    const { id } = req.params;
+    const farmTableService = new FarmTableService();
+
+    const farm = await farmTableService.listById({ id });
+
+    return res.json(farm);
   }
 }
 

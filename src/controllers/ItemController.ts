@@ -27,6 +27,15 @@ class ItemController {
 
       return res.json(itens)
   }
+
+  async listById(req: Request, res: Response){
+    const {id} = req.params
+
+    const itemServices = new ItemServices();
+
+    const item = await itemServices.listById({id})
+    return res.json(item)
+  }
 }
 
 export { ItemController };
